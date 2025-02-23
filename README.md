@@ -1,6 +1,6 @@
-# dox
+# Dox Messenger v0.0.1
 
-A new Flutter project.
+Project on Flutter
 
 ## Getting Started
 
