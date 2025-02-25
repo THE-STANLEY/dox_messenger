@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "333326594",
+    "project_id": "doxmessenger-e93d6",
+    "storage_bucket": "doxmessenger-e93d6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333326594:android:9a187d79158ee50509fa1b",
+        "android_client_info": {
+          "package_name": "com.example.dox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA92tTPhvkOY7IWywuvcNttRqm98YhfgHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

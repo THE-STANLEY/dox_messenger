@@ -10,7 +10,7 @@ class Dox extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Dox Messenger',
-      theme: themeData,
+      theme: lightTheme,
       home: AuthScreen(),
     );
   }
