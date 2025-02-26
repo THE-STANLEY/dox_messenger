@@ -1,34 +1,24 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class AuthScreen extends StatelessWidget {
-  const AuthScreen({super.key});
+class RegScreen extends StatelessWidget {
+  const RegScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white, body: _AuthFormWidget());
+    return Scaffold(
+      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      body: _RegFormWidget(),
+    );
   }
 }
 
-class _AuthFormWidget extends StatelessWidget {
-  const _AuthFormWidget();
+class _RegFormWidget extends StatelessWidget {
+  const _RegFormWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final phoneNumber = TextEditingController();
-
-    void readDataFromDatabase() async {
-      final ref = FirebaseDatabase.instance.ref();
-      final snapshot = await ref.child('users/phoneNumber').get();
-      final userNumber = phoneNumber.text;
-      if (userNumber == snapshot.value) {
-        Navigator.of(context).pushReplacementNamed('/messenger');
-      } else {
-        print('fail');
-      }
-    }
-
     return Center(
       child: SizedBox(
         width: 300,
@@ -36,12 +26,13 @@ class _AuthFormWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Вход',
+              'Регистрация',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
             ),
             SizedBox(height: 40),
+            TextFormField(),
+            SizedBox(height: 10),
             IntlPhoneField(
-              controller: phoneNumber,
               keyboardType: TextInputType.phone,
               focusNode: FocusNode(),
               dropdownTextStyle: TextStyle(fontSize: 15),
@@ -61,11 +52,9 @@ class _AuthFormWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextButton(
-                  onPressed: () {
-                    readDataFromDatabase();
-                  },
+                  onPressed: () {},
                   child: Text(
-                    'Войти',
+                    'Регистрация',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -77,10 +66,8 @@ class _AuthFormWidget extends StatelessWidget {
             ),
             SizedBox(height: 10),
             TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/register');
-              },
-              child: Text('Нет аккаунта? Зарегистрироваться'),
+              onPressed: () {},
+              child: Text('Уже есть аккаунт? Войти'),
             ),
           ],
         ),

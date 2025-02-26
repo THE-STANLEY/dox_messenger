@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'core/router/router.dart';
 import 'core/theme/theme.dart';
-import 'features/auth/auth_screen.dart';
 
 class Dox extends StatelessWidget {
   const Dox({super.key});
@@ -11,7 +11,8 @@ class Dox extends StatelessWidget {
     return MaterialApp(
       title: 'Dox Messenger',
       theme: lightTheme,
-      home: AuthScreen(),
+      initialRoute: '/',
+      routes: router,
     );
   }
 }
