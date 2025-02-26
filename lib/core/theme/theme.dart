@@ -22,22 +22,18 @@ import 'package:flutter/material.dart';
 final lightTheme = ThemeData(
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
-    seedColor: Colors.black,
+    seedColor: const Color.fromARGB(255, 0, 0, 0),
     brightness: Brightness.light,
   ),
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.blue,
+    iconTheme: IconThemeData(color: Colors.white),
   ),
   scaffoldBackgroundColor: const Color.fromRGBO(255, 255, 255, 0.702),
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    selectedItemColor: Colors.blue,
-    unselectedItemColor: Colors.grey,
-    backgroundColor: Colors.white,
-  ),
   textTheme: _textTheme,
   dividerColor: Colors.white24,
 );
 
 final _textTheme = TextTheme(
+  labelSmall: TextStyle(color: Colors.blue, fontSize: 13),
 );
-

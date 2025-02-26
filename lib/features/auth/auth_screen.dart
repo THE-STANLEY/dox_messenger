@@ -20,7 +20,7 @@ class _AuthFormWidget extends StatelessWidget {
 
     void readDataFromDatabase() async {
       final ref = FirebaseDatabase.instance.ref();
-      final snapshot = await ref.child('users/phoneNumber').get();
+      final snapshot = await ref.child('users/1/phoneNumber').get();
       final userNumber = phoneNumber.text;
       if (userNumber == snapshot.value) {
         Navigator.of(context).pushReplacementNamed('/messenger');
@@ -80,7 +80,10 @@ class _AuthFormWidget extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pushNamed('/register');
               },
-              child: Text('Нет аккаунта? Зарегистрироваться'),
+              child: Text(
+                'Нет аккаунта? Зарегистрироваться',
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
             ),
           ],
         ),

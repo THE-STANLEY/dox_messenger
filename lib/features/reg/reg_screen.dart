@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
@@ -15,10 +16,20 @@ class RegScreen extends StatelessWidget {
 }
 
 class _RegFormWidget extends StatelessWidget {
-  const _RegFormWidget({super.key});
+  const _RegFormWidget();
 
   @override
   Widget build(BuildContext context) {
+    final phoneNumber = TextEditingController();
+    final userName = TextEditingController();
+
+    void createUser() async {
+      final phone = phoneNumber.text;
+      final user = userName.text;
+      final ref = FirebaseDatabase.instance.ref('users/1');
+      await ref.set({"name": user, "phoneNumber": phone});
+    }
+
     return Center(
       child: SizedBox(
         width: 300,
@@ -30,9 +41,20 @@ class _RegFormWidget extends StatelessWidget {
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
             ),
             SizedBox(height: 40),
-            TextFormField(),
+            TextFormField(
+              controller: userName,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                labelText: 'Имя пользователя',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(),
+                ),
+              ),
+            ),
             SizedBox(height: 10),
             IntlPhoneField(
+              controller: phoneNumber,
               keyboardType: TextInputType.phone,
               focusNode: FocusNode(),
               dropdownTextStyle: TextStyle(fontSize: 15),
@@ -52,7 +74,9 @@ class _RegFormWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    createUser();
+                  },
                   child: Text(
                     'Регистрация',
                     style: TextStyle(
@@ -67,7 +91,10 @@ class _RegFormWidget extends StatelessWidget {
             SizedBox(height: 10),
             TextButton(
               onPressed: () {},
-              child: Text('Уже есть аккаунт? Войти'),
+              child: Text(
+                'Уже есть аккаунт? Войти',
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
             ),
           ],
         ),
