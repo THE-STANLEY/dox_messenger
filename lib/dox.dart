@@ -1,18 +1,19 @@
+import 'package:dox/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 
-import 'core/router/router.dart';
 import 'core/theme/theme.dart';
 
 class Dox extends StatelessWidget {
-  const Dox({super.key});
+  final appRouter = AppRouter();
+
+  Dox({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Dox Messenger',
       theme: lightTheme,
-      initialRoute: '/',
-      routes: router,
+      routerConfig: appRouter.config(),
     );
   }
 }
