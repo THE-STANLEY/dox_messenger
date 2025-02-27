@@ -26,7 +26,6 @@ class _AuthFormWidget extends StatelessWidget {
       final snapshot = await ref.child('users/1/phoneNumber').get();
       final userNumber = phoneNumber.text;
       if (userNumber == snapshot.value) {
-        // Navigator.of(context).pushReplacementNamed('/messenger');
       } else {
         print('fail');
       }
