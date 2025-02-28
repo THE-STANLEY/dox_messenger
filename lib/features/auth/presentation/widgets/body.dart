@@ -2,7 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dox/core/routing/app_router.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+
+import '../bloc/auth_bloc.dart';
+
+final AuthBloc bloc = AuthBloc();
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -21,12 +26,14 @@ class Body extends StatelessWidget {
       }
     }
 
-    return Center(
-      child: SizedBox(
-        child: Padding(
+    return BlocBuilder<AuthBloc, AuthState>(
+      bloc: bloc,
+      builder: (context, state) {
+        return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'Вход',
@@ -80,8 +87,8 @@ class Body extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
